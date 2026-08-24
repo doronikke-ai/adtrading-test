@@ -72,7 +72,7 @@ export function SiteHeader() {
                 'px-3.5 py-2 text-sm font-medium tracking-wide transition-colors',
                 pathname === link.href
                   ? 'bg-accent text-accent-foreground'
-                  : 'text-primary-foreground/90 hover:bg-primary-foreground/10 hover:text-primary-foreground',
+                  : 'text-primary-foreground/90 hover:bg-black/25 hover:text-highlight',
               )}
             >
               {link.label}
@@ -81,7 +81,7 @@ export function SiteHeader() {
         </nav>
 
         <div className="flex shrink-0 items-center gap-3 xl:ml-2 xl:gap-4">
-          <div className="hidden shrink-0 items-center gap-1 border border-primary-foreground/30 bg-primary-foreground/10 px-2 py-1 whitespace-nowrap font-mono text-xs tracking-wider uppercase xl:flex">
+          <div className="hidden shrink-0 items-center gap-1 border border-primary-foreground/25 bg-black/25 px-2 py-1 whitespace-nowrap font-mono text-xs tracking-wider uppercase backdrop-blur-sm xl:flex">
             {locales.map((loc, i) => (
               <span key={loc} className="flex items-center">
                 {i > 0 && <span className="mx-1.5 text-primary-foreground/30">/</span>}
@@ -93,7 +93,7 @@ export function SiteHeader() {
                     'px-1.5 py-0.5 transition-colors',
                     locale === loc
                       ? 'bg-highlight font-semibold text-primary'
-                      : 'text-primary-foreground/80 hover:text-primary-foreground',
+                      : 'text-primary-foreground/80 hover:bg-primary-foreground/15 hover:text-highlight',
                   )}
                 >
                   {localeLabels[loc]}
@@ -135,7 +135,7 @@ export function SiteHeader() {
                 'px-3 py-3 text-base font-medium',
                 pathname === link.href
                   ? 'bg-accent text-accent-foreground'
-                  : 'text-primary-foreground/85 hover:bg-primary-foreground/10',
+                  : 'text-primary-foreground/85 hover:bg-black/25 hover:text-highlight',
               )}
             >
               {link.label}
@@ -153,7 +153,7 @@ export function SiteHeader() {
                     'px-1.5 py-0.5 transition-colors',
                     locale === loc
                       ? 'bg-highlight font-semibold text-primary'
-                      : 'text-primary-foreground/80 hover:text-primary-foreground',
+                      : 'text-primary-foreground/80 hover:bg-primary-foreground/15 hover:text-highlight',
                   )}
                 >
                   {localeLabels[loc]}

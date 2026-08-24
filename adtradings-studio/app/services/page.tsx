@@ -51,12 +51,12 @@ export default function ServicesPage() {
                     style={{ backgroundImage: `url(${backgroundImages[i]})` }}
                   />
                   <div aria-hidden="true" className="absolute inset-0 -z-10 bg-primary/95 opacity-0 transition-opacity duration-500 group-hover:opacity-100 group-focus-visible:opacity-100" />
-                  <span className="font-mono text-2xl font-semibold text-accent transition-colors duration-300 group-hover:text-accent group-focus-visible:text-accent">{String(i + 1).padStart(2, '0')}</span>
+                  <span className="font-mono text-2xl font-semibold text-accent transition-colors duration-300 group-hover:text-highlight group-focus-visible:text-highlight">{String(i + 1).padStart(2, '0')}</span>
                   <div>
-                    <h2 className="text-balance text-2xl font-semibold tracking-tight text-foreground transition-colors duration-300 group-hover:text-accent group-focus-visible:text-accent md:text-3xl">{serviceTitle}</h2>
-                    <p className="mt-4 max-w-2xl text-pretty text-lg leading-relaxed text-muted-foreground transition-colors duration-300 group-hover:text-accent group-focus-visible:text-accent">{serviceLong}</p>
+                    <h2 className="text-balance text-2xl font-semibold tracking-tight text-foreground transition-colors duration-300 group-hover:text-primary-foreground group-focus-visible:text-primary-foreground md:text-3xl">{serviceTitle}</h2>
+                    <p className="mt-4 max-w-2xl text-pretty text-lg leading-relaxed text-muted-foreground transition-colors duration-300 group-hover:text-primary-foreground/85 group-focus-visible:text-primary-foreground/85">{serviceLong}</p>
                   </div>
-                  <span className="hidden text-2xl text-primary transition-all duration-300 group-hover:translate-x-2 group-hover:text-accent group-focus-visible:translate-x-2 group-focus-visible:text-accent md:block">→</span>
+                  <span className="hidden text-2xl text-primary transition-all duration-300 group-hover:translate-x-2 group-hover:text-highlight group-focus-visible:translate-x-2 group-focus-visible:text-highlight md:block">→</span>
                 </article>
               )
             })}

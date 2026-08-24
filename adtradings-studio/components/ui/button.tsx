@@ -9,13 +9,13 @@ const buttonVariants = cva(
     variants: {
       variant: {
         default:
-          'bg-primary text-primary-foreground [a]:hover:bg-accent [&_svg]:group-hover/button:translate-x-1',
+          'bg-primary text-primary-foreground hover:bg-accent [&_svg]:group-hover/button:translate-x-1',
         outline:
-          'border-border bg-background hover:border-foreground hover:bg-foreground hover:text-background aria-expanded:bg-muted aria-expanded:text-foreground [&_svg]:group-hover/button:translate-x-1',
+          'border-border bg-background hover:border-primary hover:bg-primary hover:text-primary-foreground aria-expanded:bg-muted aria-expanded:text-foreground [&_svg]:group-hover/button:translate-x-1',
         secondary:
-          'bg-secondary text-secondary-foreground hover:bg-secondary/80 aria-expanded:bg-secondary aria-expanded:text-secondary-foreground',
+          'bg-secondary text-secondary-foreground hover:bg-primary hover:text-primary-foreground aria-expanded:bg-secondary aria-expanded:text-secondary-foreground',
         ghost:
-          'hover:bg-muted hover:text-foreground aria-expanded:bg-muted aria-expanded:text-foreground',
+          'hover:bg-primary/10 hover:text-primary aria-expanded:bg-muted aria-expanded:text-foreground',
         destructive:
           'bg-destructive/10 text-destructive hover:bg-destructive/20 focus-visible:border-destructive/40 focus-visible:ring-destructive/20',
         inverse:
