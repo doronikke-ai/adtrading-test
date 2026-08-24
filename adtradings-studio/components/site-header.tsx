@@ -1,5 +1,6 @@
 'use client'
 
+import Image from 'next/image'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { useState, useEffect } from 'react'
@@ -45,23 +46,20 @@ export function SiteHeader() {
       )}
     >
       <div className="mx-auto flex w-full max-w-7xl items-center justify-between gap-4 px-5 md:px-8">
-        {/* Logo — dark mark on the light wedge while the header is transparent over
-            the hero; flips to a light mark once the header becomes a solid bar. */}
-        <Link href="/" className="flex shrink-0 items-center gap-2">
-          <svg viewBox="0 0 36 36" className="size-8 shrink-0 md:size-9" aria-hidden="true" focusable="false">
-            <rect x="1" y="1" width="34" height="34" className={scrolled ? 'fill-primary-foreground' : 'fill-primary'} />
-            <path d="M1 1 L35 1 L1 35 Z" className={scrolled ? 'fill-primary' : 'fill-accent'} />
-            <text
-              x="24"
-              y="26"
-              textAnchor="middle"
-              className={cn('font-mono text-[13px] font-semibold', scrolled ? 'fill-primary-foreground' : 'fill-accent')}
-            >
-              AD
-            </text>
-          </svg>
-          <span className={cn('hidden text-base font-semibold tracking-tight sm:inline', solidHeader ? 'text-highlight' : 'text-primary')}>
-            Asia<span className="text-accent">Direct</span>
+        {/* Official Asia Direct Tradings crest mark. The badge carries its own
+            ivory backdrop and ring, so it reads clearly whether the header is
+            transparent over the hero or the solid brand bar. */}
+        <Link href="/" className="flex shrink-0 items-center gap-2.5">
+          <Image
+            src="/images/logo.png"
+            alt="Asia Direct Tradings"
+            width={44}
+            height={44}
+            priority
+            className="size-9 shrink-0 rounded-full shadow-[0_1px_4px_rgba(0,0,0,0.25)] md:size-11"
+          />
+          <span className="hidden text-base font-semibold tracking-tight text-primary-foreground sm:inline">
+            Asia Direct<span className="text-highlight"> Tradings</span>
           </span>
         </Link>
 
@@ -74,7 +72,7 @@ export function SiteHeader() {
                 'px-3.5 py-2 text-sm font-medium tracking-wide transition-colors',
                 pathname === link.href
                   ? 'bg-accent text-accent-foreground'
-                  : 'text-primary-foreground/90 hover:bg-primary-foreground/10 hover:text-primary-foreground',
+                  : 'text-primary-foreground/90 hover:bg-black/25 hover:text-highlight',
               )}
             >
               {link.label}
@@ -83,7 +81,7 @@ export function SiteHeader() {
         </nav>
 
         <div className="flex shrink-0 items-center gap-3 xl:ml-2 xl:gap-4">
-          <div className="hidden shrink-0 items-center gap-1 border border-primary-foreground/30 bg-primary-foreground/10 px-2 py-1 whitespace-nowrap font-mono text-xs tracking-wider uppercase xl:flex">
+          <div className="hidden shrink-0 items-center gap-1 border border-primary-foreground/25 bg-black/25 px-2 py-1 whitespace-nowrap font-mono text-xs tracking-wider uppercase backdrop-blur-sm xl:flex">
             {locales.map((loc, i) => (
               <span key={loc} className="flex items-center">
                 {i > 0 && <span className="mx-1.5 text-primary-foreground/30">/</span>}
@@ -95,7 +93,7 @@ export function SiteHeader() {
                     'px-1.5 py-0.5 transition-colors',
                     locale === loc
                       ? 'bg-highlight font-semibold text-primary'
-                      : 'text-primary-foreground/80 hover:text-primary-foreground',
+                      : 'text-primary-foreground/80 hover:bg-primary-foreground/15 hover:text-highlight',
                   )}
                 >
                   {localeLabels[loc]}
@@ -137,7 +135,7 @@ export function SiteHeader() {
                 'px-3 py-3 text-base font-medium',
                 pathname === link.href
                   ? 'bg-accent text-accent-foreground'
-                  : 'text-primary-foreground/85 hover:bg-primary-foreground/10',
+                  : 'text-primary-foreground/85 hover:bg-black/25 hover:text-highlight',
               )}
             >
               {link.label}
@@ -155,7 +153,7 @@ export function SiteHeader() {
                     'px-1.5 py-0.5 transition-colors',
                     locale === loc
                       ? 'bg-highlight font-semibold text-primary'
-                      : 'text-primary-foreground/80 hover:text-primary-foreground',
+                      : 'text-primary-foreground/80 hover:bg-primary-foreground/15 hover:text-highlight',
                   )}
                 >
                   {localeLabels[loc]}

@@ -13,7 +13,7 @@ export function OptimusSphere() {
     if (!context) return
 
     // Dot-matrix globe treatment copied from the referenced template, recolored to
-    // the existing brand cyan used throughout the hero.
+    // the brand bronze/highlight tone used throughout the hero.
     const characters = '·•'
     let angle = 0
 
@@ -60,7 +60,7 @@ export function OptimusSphere() {
       points.sort((a, b) => a.z - b.z)
       points.forEach((point) => {
         const opacity = 0.16 + (point.z + 1) * 0.3
-        context.fillStyle = `rgba(0, 159, 227, ${opacity})`
+        context.fillStyle = `rgba(191, 139, 63, ${opacity})`
         context.fillText(point.char, point.x, point.y)
       })
       angle += 0.006

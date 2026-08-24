@@ -73,14 +73,14 @@ export default function AboutPage() {
                     style={{ backgroundImage: `url(${backgroundImages[i]})` }}
                   />
                   <div aria-hidden="true" className="absolute inset-0 -z-10 bg-primary/95 opacity-0 transition-opacity duration-500 group-hover:opacity-100 group-focus-visible:opacity-100" />
-                  <span className="font-mono text-2xl font-semibold text-accent transition-colors duration-300 group-hover:text-accent group-focus-visible:text-accent">{step.n}</span>
+                  <span className="font-mono text-2xl font-semibold text-accent transition-colors duration-300 group-hover:text-highlight group-focus-visible:text-highlight">{step.n}</span>
                   <div>
-                    <h3 className="text-xl font-semibold tracking-tight text-foreground transition-colors duration-300 group-hover:text-accent group-focus-visible:text-accent">{step.title}</h3>
-                    <p className="mt-4 max-w-xl text-pretty leading-relaxed text-muted-foreground transition-colors duration-300 group-hover:text-accent group-focus-visible:text-accent">
+                    <h3 className="text-xl font-semibold tracking-tight text-foreground transition-colors duration-300 group-hover:text-primary-foreground group-focus-visible:text-primary-foreground">{step.title}</h3>
+                    <p className="mt-4 max-w-xl text-pretty leading-relaxed text-muted-foreground transition-colors duration-300 group-hover:text-primary-foreground/85 group-focus-visible:text-primary-foreground/85">
                       {step.body}
                     </p>
                   </div>
-                  <span className="hidden text-2xl text-primary transition-all duration-300 group-hover:translate-x-2 group-hover:text-accent group-focus-visible:translate-x-2 group-focus-visible:text-accent md:block">→</span>
+                  <span className="hidden text-2xl text-primary transition-all duration-300 group-hover:translate-x-2 group-hover:text-highlight group-focus-visible:translate-x-2 group-focus-visible:text-highlight md:block">→</span>
                 </article>
               )
             })}
