@@ -1,5 +1,6 @@
 'use client'
 
+import Image from 'next/image'
 import Link from 'next/link'
 import { MapPin, Phone, Mail } from 'lucide-react'
 import { useLocale } from '@/lib/i18n/language-provider'
@@ -20,10 +21,14 @@ export function SiteFooter() {
       <div className="mx-auto max-w-7xl px-5 py-16 md:px-8 md:py-20">
         <div className="grid gap-12 md:grid-cols-[1.6fr_1fr_1fr]">
           <div className="max-w-md">
-            <p className="flex items-center gap-2.5 text-base font-semibold tracking-tight">
-              <span className="clip-corner-sm flex size-8 items-center justify-center bg-primary-foreground/15 font-mono text-xs font-semibold">
-                AD
-              </span>
+            <p className="flex items-center gap-3 text-base font-semibold tracking-tight">
+              <Image
+                src="/images/logo.png"
+                alt="Asia Direct Tradings"
+                width={40}
+                height={40}
+                className="size-9 shrink-0 rounded-full"
+              />
               Asia Direct Tradings LTD.
             </p>
             <p className="mt-5 text-pretty leading-relaxed text-primary-foreground/70">

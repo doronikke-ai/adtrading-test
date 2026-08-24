@@ -1,5 +1,6 @@
 'use client'
 
+import Image from 'next/image'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { useState, useEffect } from 'react'
@@ -45,23 +46,20 @@ export function SiteHeader() {
       )}
     >
       <div className="mx-auto flex w-full max-w-7xl items-center justify-between gap-4 px-5 md:px-8">
-        {/* Logo — dark mark on the light wedge while the header is transparent over
-            the hero; flips to a light mark once the header becomes a solid bar. */}
-        <Link href="/" className="flex shrink-0 items-center gap-2">
-          <svg viewBox="0 0 36 36" className="size-8 shrink-0 md:size-9" aria-hidden="true" focusable="false">
-            <rect x="1" y="1" width="34" height="34" className={scrolled ? 'fill-primary-foreground' : 'fill-primary'} />
-            <path d="M1 1 L35 1 L1 35 Z" className={scrolled ? 'fill-primary' : 'fill-accent'} />
-            <text
-              x="24"
-              y="26"
-              textAnchor="middle"
-              className={cn('font-mono text-[13px] font-semibold', scrolled ? 'fill-primary-foreground' : 'fill-accent')}
-            >
-              AD
-            </text>
-          </svg>
-          <span className={cn('hidden text-base font-semibold tracking-tight sm:inline', solidHeader ? 'text-highlight' : 'text-primary')}>
-            Asia<span className="text-accent">Direct</span>
+        {/* Official Asia Direct Tradings crest mark. The badge carries its own
+            ivory backdrop and ring, so it reads clearly whether the header is
+            transparent over the hero or the solid brand bar. */}
+        <Link href="/" className="flex shrink-0 items-center gap-2.5">
+          <Image
+            src="/images/logo.png"
+            alt="Asia Direct Tradings"
+            width={44}
+            height={44}
+            priority
+            className="size-9 shrink-0 rounded-full shadow-[0_1px_4px_rgba(0,0,0,0.25)] md:size-11"
+          />
+          <span className="hidden text-base font-semibold tracking-tight text-primary-foreground sm:inline">
+            Asia Direct<span className="text-highlight"> Tradings</span>
           </span>
         </Link>
 

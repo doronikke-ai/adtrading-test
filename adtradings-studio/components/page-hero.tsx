@@ -11,7 +11,7 @@ type PageHeroProps = {
 
 export function PageHero({ label, title, intro, image, imageAlt }: PageHeroProps) {
   return (
-    <section className="relative flex min-h-[25rem] items-center overflow-hidden bg-accent md:min-h-[27rem]">
+    <section className="relative flex min-h-[25rem] items-center overflow-hidden bg-primary md:min-h-[27rem]">
       <Image
         src={image || '/placeholder.svg'}
         alt={imageAlt}
@@ -20,9 +20,9 @@ export function PageHero({ label, title, intro, image, imageAlt }: PageHeroProps
         sizes="100vw"
         className="object-cover"
       />
-      <div className="absolute inset-0 bg-accent/80 mix-blend-multiply" />
-      <div className="absolute inset-0 bg-[#006B9E]/45" />
-      <div className="absolute inset-x-0 bottom-0 z-20 h-px bg-white/70" />
+      <div className="absolute inset-0 bg-primary/80 mix-blend-multiply" />
+      <div className="absolute inset-0 bg-primary/45" />
+      <div className="absolute inset-x-0 bottom-0 z-20 h-px bg-highlight/60" />
 
       <div className="relative z-20 mx-auto flex w-full max-w-7xl flex-col items-center px-5 pt-20 pb-12 text-center md:px-8 md:pt-24 md:pb-14">
         <Kicker tone="inverse" className="mb-4 text-white/85">
