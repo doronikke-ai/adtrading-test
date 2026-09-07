@@ -1,6 +1,7 @@
 'use client'
 
 import { useState, useTransition } from 'react'
+import { useSearchParams } from 'next/navigation'
 import { ArrowUpRight, Check, AlertCircle, Loader2 } from 'lucide-react'
 import { submitInquiry } from '@/app/actions'
 import { Button } from '@/components/ui/button'
@@ -20,6 +21,9 @@ const labelClass = 'text-sm font-medium text-foreground'
 
 export function ContactForm() {
   const { t } = useLocale()
+  const searchParams = useSearchParams()
+  const selectedInquiry = searchParams.get('inquiry')
+  const initialInquiry = inquiryTypes.includes(selectedInquiry ?? '') ? selectedInquiry ?? '' : ''
   const [submitted, setSubmitted] = useState(false)
   const [error, setError] = useState<string | null>(null)
   const [isPending, startTransition] = useTransition()
@@ -113,7 +117,7 @@ export function ContactForm() {
         <label htmlFor="inquiry" className={labelClass}>
           Inquiry type
         </label>
-        <select id="inquiry" name="inquiry" defaultValue="" required className={fieldClass}>
+        <select id="inquiry" name="inquiry" defaultValue={initialInquiry} required className={fieldClass}>
           <option value="" disabled>
             Select a service
           </option>

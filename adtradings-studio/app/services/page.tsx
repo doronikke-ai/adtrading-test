@@ -1,5 +1,6 @@
 'use client'
 
+import Link from 'next/link'
 import { PageHero } from '@/components/page-hero'
 import { CtaBand } from '@/components/cta-band'
 import { services } from '@/lib/services'
@@ -40,9 +41,9 @@ export default function ServicesPage() {
               ]
 
               return (
-                <article
+                <Link
                   key={service.n}
-                  tabIndex={0}
+                  href={`/contact?inquiry=${encodeURIComponent(service.title)}`}
                   className="group relative isolate grid gap-5 overflow-hidden border-t-2 border-primary/15 px-5 py-9 transition-colors duration-500 hover:border-accent focus-visible:border-accent md:grid-cols-[5rem_1fr_auto] md:items-start md:gap-10 md:px-10 md:py-10"
                 >
                   <div
@@ -57,7 +58,7 @@ export default function ServicesPage() {
                     <p className="mt-4 max-w-2xl text-pretty text-lg leading-relaxed text-muted-foreground transition-colors duration-300 group-hover:text-primary-foreground/85 group-focus-visible:text-primary-foreground/85">{serviceLong}</p>
                   </div>
                   <span className="hidden text-2xl text-primary transition-all duration-300 group-hover:translate-x-2 group-hover:text-highlight group-focus-visible:translate-x-2 group-focus-visible:text-highlight md:block">→</span>
-                </article>
+                </Link>
               )
             })}
           </div>

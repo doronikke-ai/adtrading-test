@@ -29,6 +29,8 @@
   --color-input: var(--input);
   --color-ring: var(--ring);
   --color-highlight: var(--highlight);
+  --color-cta: var(--cta);
+  --color-cta-foreground: var(--cta-foreground);
 
   --radius-sm: calc(var(--radius) * 0.6);
   --radius-md: calc(var(--radius) * 0.8);
@@ -71,6 +73,11 @@
   --accent: #1f5c43;
   --accent-foreground: #fdfaf5;
   --highlight: #bf8b3f;
+
+  /* Vivid CTA accent — reserved for the primary "Get in touch" action so it
+     pops against the muted crest palette. */
+  --cta: #ff7a1a;
+  --cta-foreground: #fdfaf5;
 
   --destructive: #b0342a;
 

@@ -4,9 +4,16 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { useState, useEffect } from 'react'
-import { Menu, X } from 'lucide-react'
+import { Menu, X, Globe, ChevronDown, Check } from 'lucide-react'
 import { cn } from '@/lib/utils'
 import { Button } from '@/components/ui/button'
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuGroup,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from '@/components/ui/dropdown-menu'
 import { useLocale } from '@/lib/i18n/language-provider'
 import { locales, localeLabels } from '@/lib/i18n/dictionaries'
 
@@ -19,6 +26,7 @@ export function SiteHeader() {
   const links = [
     { href: '/', label: t.nav.home },
     { href: '/services', label: t.nav.services },
+    { href: '/delivery', label: t.nav.delivery },
     { href: '/products', label: t.nav.products },
     { href: '/about', label: t.nav.about },
   ]
@@ -81,30 +89,42 @@ export function SiteHeader() {
         </nav>
 
         <div className="flex shrink-0 items-center gap-3 xl:ml-2 xl:gap-4">
-          <div className="hidden shrink-0 items-center gap-1 border border-primary-foreground/25 bg-black/25 px-2 py-1 whitespace-nowrap font-mono text-xs tracking-wider uppercase backdrop-blur-sm xl:flex">
-            {locales.map((loc, i) => (
-              <span key={loc} className="flex items-center">
-                {i > 0 && <span className="mx-1.5 text-primary-foreground/30">/</span>}
-                <button
-                  type="button"
-                  onClick={() => setLocale(loc)}
-                  aria-pressed={locale === loc}
-                  className={cn(
-                    'px-1.5 py-0.5 transition-colors',
-                    locale === loc
-                      ? 'bg-highlight font-semibold text-primary'
-                      : 'text-primary-foreground/80 hover:bg-primary-foreground/15 hover:text-highlight',
-                  )}
-                >
-                  {localeLabels[loc]}
-                </button>
-              </span>
-            ))}
-          </div>
+          <DropdownMenu>
+            <DropdownMenuTrigger
+              className={cn(
+                'hidden shrink-0 items-center gap-1.5 border border-primary-foreground/25 bg-black/25 px-2.5 py-1.5 whitespace-nowrap font-mono text-xs font-semibold tracking-wider uppercase text-primary-foreground/90 backdrop-blur-sm transition-colors outline-none hover:border-primary-foreground/40 hover:bg-black/35 hover:text-highlight data-open:border-primary-foreground/40 data-open:bg-black/35 data-open:text-highlight xl:flex',
+              )}
+            >
+              <Globe className="size-3.5" />
+              {localeLabels[locale]}
+              <ChevronDown className="size-3 opacity-70" />
+            </DropdownMenuTrigger>
+            <DropdownMenuContent
+              align="end"
+              sideOffset={10}
+              className="min-w-36 rounded-none border border-primary-foreground/15 bg-primary/90 p-1 text-primary-foreground backdrop-blur-md"
+            >
+              <DropdownMenuGroup>
+                {locales.map((loc) => (
+                  <DropdownMenuItem
+                    key={loc}
+                    onClick={() => setLocale(loc)}
+                    className={cn(
+                      'rounded-none font-mono text-xs font-semibold tracking-wider uppercase text-primary-foreground/85 focus:bg-primary-foreground/15 focus:text-primary-foreground',
+                      locale === loc && 'bg-highlight text-primary focus:bg-highlight focus:text-primary',
+                    )}
+                  >
+                    {localeLabels[loc]}
+                    {locale === loc && <Check className="ml-auto size-3.5" />}
+                  </DropdownMenuItem>
+                ))}
+              </DropdownMenuGroup>
+            </DropdownMenuContent>
+          </DropdownMenu>
           <Button
             render={<Link href="/contact" />}
             size="sm"
-            className="hidden shrink-0 rounded-none bg-highlight text-primary hover:bg-primary-foreground xl:inline-flex"
+            className="hidden shrink-0 rounded-none bg-cta text-cta-foreground shadow-[0_2px_14px_rgba(255,122,26,0.45)] hover:bg-cta/90 xl:inline-flex"
           >
             {t.nav.getInTouch}
           </Button>
@@ -141,27 +161,28 @@ export function SiteHeader() {
               {link.label}
             </Link>
           ))}
-          <div className="mt-2 flex items-center gap-1 border-t border-primary-foreground/15 py-3 font-mono text-xs tracking-wider uppercase">
-            {locales.map((loc, i) => (
-              <span key={loc} className="flex items-center">
-                {i > 0 && <span className="mx-1.5 text-primary-foreground/30">/</span>}
-                <button
-                  type="button"
-                  onClick={() => setLocale(loc)}
-                  aria-pressed={locale === loc}
-                  className={cn(
-                    'px-1.5 py-0.5 transition-colors',
-                    locale === loc
-                      ? 'bg-highlight font-semibold text-primary'
-                      : 'text-primary-foreground/80 hover:bg-primary-foreground/15 hover:text-highlight',
-                  )}
-                >
-                  {localeLabels[loc]}
-                </button>
-              </span>
+          <div className="mt-2 flex flex-wrap items-center gap-1 border-t border-primary-foreground/15 py-3 font-mono text-xs tracking-wider uppercase">
+            {locales.map((loc) => (
+              <button
+                key={loc}
+                type="button"
+                onClick={() => setLocale(loc)}
+                aria-pressed={locale === loc}
+                className={cn(
+                  'px-2 py-1 transition-colors',
+                  locale === loc
+                    ? 'bg-highlight font-semibold text-primary'
+                    : 'border border-primary-foreground/25 text-primary-foreground/80 hover:bg-primary-foreground/15 hover:text-highlight',
+                )}
+              >
+                {localeLabels[loc]}
+              </button>
             ))}
           </div>
-          <Button render={<Link href="/contact" />} className="mt-3 w-full rounded-none bg-highlight text-primary hover:bg-primary-foreground">
+          <Button
+            render={<Link href="/contact" />}
+            className="mt-3 w-full rounded-none bg-cta text-cta-foreground shadow-[0_2px_14px_rgba(255,122,26,0.45)] hover:bg-cta/90"
+          >
             {t.nav.getInTouch}
           </Button>
         </nav>
