@@ -26,6 +26,7 @@ export function SiteHeader() {
   const links = [
     { href: '/', label: t.nav.home },
     { href: '/services', label: t.nav.services },
+    { href: '/delivery', label: t.nav.delivery },
     { href: '/products', label: t.nav.products },
     { href: '/about', label: t.nav.about },
   ]
