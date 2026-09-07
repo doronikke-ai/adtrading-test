@@ -1,5 +1,6 @@
 'use client'
 
+import { Suspense } from 'react'
 import { MapPin, Phone, Mail, Clock } from 'lucide-react'
 import { ContactForm } from '@/components/contact-form'
 import { CountryMarquee } from '@/components/country-marquee'
@@ -62,7 +63,9 @@ export default function ContactPage() {
             </p>
           </div>
 
-          <ContactForm />
+          <Suspense fallback={<div className="min-h-96" aria-hidden="true" />}>
+            <ContactForm />
+          </Suspense>
         </div>
       </section>
 
