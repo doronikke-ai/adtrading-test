@@ -99,14 +99,18 @@ export function SiteHeader() {
               {localeLabels[locale]}
               <ChevronDown className="size-3 opacity-70" />
             </DropdownMenuTrigger>
-            <DropdownMenuContent align="end" sideOffset={10} className="min-w-36 rounded-none border border-border bg-popover p-1">
+            <DropdownMenuContent
+              align="end"
+              sideOffset={10}
+              className="min-w-36 rounded-none border border-primary-foreground/15 bg-primary/90 p-1 text-primary-foreground backdrop-blur-md"
+            >
               <DropdownMenuGroup>
                 {locales.map((loc) => (
                   <DropdownMenuItem
                     key={loc}
                     onClick={() => setLocale(loc)}
                     className={cn(
-                      'rounded-none font-mono text-xs font-semibold tracking-wider uppercase',
+                      'rounded-none font-mono text-xs font-semibold tracking-wider uppercase text-primary-foreground/85 focus:bg-primary-foreground/15 focus:text-primary-foreground',
                       locale === loc && 'bg-highlight text-primary focus:bg-highlight focus:text-primary',
                     )}
                   >
