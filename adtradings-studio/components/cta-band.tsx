@@ -14,8 +14,6 @@ type CtaBandProps = {
 export function CtaBand({ eyebrow, title, body, href = '/contact', cta }: CtaBandProps) {
   return (
     <section className="relative overflow-hidden bg-primary">
-      <div className="absolute top-0 right-0 h-full w-1/3 bg-primary-foreground/[0.03]" />
-      <div className="absolute top-0 right-[8%] hidden h-full w-px bg-accent/50 md:block" />
       <div className="relative mx-auto flex max-w-7xl flex-col gap-8 px-5 py-16 md:flex-row md:items-end md:justify-between md:px-8 md:py-24">
         <div className="max-w-2xl">
           {eyebrow && (
