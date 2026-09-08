@@ -7,13 +7,7 @@ import { submitInquiry } from '@/app/actions'
 import { Button } from '@/components/ui/button'
 import { useLocale } from '@/lib/i18n/language-provider'
 
-const inquiryTypes = [
-  'B2B wholesale supply',
-  'Sourcing service',
-  'Market expansion',
-  'Reverse export',
-  'Vancouver local delivery',
-]
+const inquiryTypes = ['B2B wholesale supply', 'Sourcing service', 'Market expansion for Asian brands', 'Reverse export to Asia', 'Vancouver local delivery']
 
 const fieldClass =
   'w-full rounded-xl border border-input bg-background px-4 py-3 text-foreground placeholder:text-muted-foreground/60 outline-none transition-colors focus:border-primary focus:ring-2 focus:ring-primary/15'
@@ -101,7 +95,7 @@ export function ContactForm() {
         </div>
         <div className="grid gap-2">
           <label htmlFor="phone" className={labelClass}>
-            Phone
+            {t.contact.form.phone}
           </label>
           <input
             id="phone"
@@ -115,15 +109,15 @@ export function ContactForm() {
 
       <div className="grid gap-2">
         <label htmlFor="inquiry" className={labelClass}>
-          Inquiry type
+          {t.contact.form.inquiryType}
         </label>
         <select id="inquiry" name="inquiry" defaultValue={initialInquiry} required className={fieldClass}>
           <option value="" disabled>
-            Select a service
+            {t.contact.form.selectService}
           </option>
-          {inquiryTypes.map((type) => (
+          {inquiryTypes.map((type, index) => (
             <option key={type} value={type}>
-              {type}
+              {t.services.items?.[index]?.title ?? type}
             </option>
           ))}
         </select>

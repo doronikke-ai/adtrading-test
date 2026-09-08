@@ -8,10 +8,10 @@ import { Kicker } from '@/components/ui/kicker'
 import { useLocale } from '@/lib/i18n/language-provider'
 
 const details = [
-  { icon: MapPin, label: 'Office', value: 'Richmond, BC, Canada' },
-  { icon: Phone, label: 'Phone', value: '+1 (778) 321-5858', href: 'tel:+17783215858' },
-  { icon: Mail, label: 'Email', value: 'Info@adtradings.com', href: 'mailto:Info@adtradings.com' },
-  { icon: Clock, label: 'Response', value: 'Within one business day' },
+  { icon: MapPin, key: 'office' as const, value: 'Richmond, BC, Canada', valueKey: undefined },
+  { icon: Phone, key: 'phone' as const, value: '+1 (778) 321-5858', valueKey: undefined, href: 'tel:+17783215858' },
+  { icon: Mail, key: 'email' as const, value: 'Info@adtradings.com', valueKey: undefined, href: 'mailto:Info@adtradings.com' },
+  { icon: Clock, key: 'response' as const, valueKey: 'responseValue' as const },
 ]
 
 export default function ContactPage() {
@@ -36,13 +36,13 @@ export default function ContactPage() {
             {details.map((detail) => {
               const Icon = detail.icon
               return (
-                <div key={detail.label} className="flex items-start gap-4">
+                <div key={t.contact.details[detail.key]} className="flex items-start gap-4">
                   <div className="flex size-10 shrink-0 items-center justify-center bg-primary/10 text-primary">
                     <Icon className="size-5" />
                   </div>
                   <div>
                     <p className="text-xs font-medium tracking-[0.1em] text-muted-foreground uppercase">
-                      {detail.label}
+                      {t.contact.details[detail.key]}
                     </p>
                     {detail.href ? (
                       <a
@@ -52,14 +52,14 @@ export default function ContactPage() {
                         {detail.value}
                       </a>
                     ) : (
-                      <p className="mt-1 text-lg font-medium text-foreground">{detail.value}</p>
+                      <p className="mt-1 text-lg font-medium text-foreground">{detail.valueKey ? t.contact.details[detail.valueKey] : detail.value}</p>
                     )}
                   </div>
                 </div>
               )
             })}
             <p className="mt-2 border-t border-border pt-5 text-sm text-muted-foreground">
-              Wholesale &amp; consumer retail — everyone welcome.
+              {t.contact.details.welcome}
             </p>
           </div>
 
