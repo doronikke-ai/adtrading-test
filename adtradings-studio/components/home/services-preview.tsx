@@ -35,7 +35,9 @@ export function ServicesPreview() {
       </div>
 
       <div className="mt-16 flex flex-col">
-        {services.map((service, i) => (
+        {services.map((service, i) => {
+          const localizedService = t.services.items?.[i]
+          return (
           <ScrollReveal key={service.title} delay={i * 90}>
             <Link
               href="/services"
@@ -45,15 +47,16 @@ export function ServicesPreview() {
                 {String(i + 1).padStart(2, '0')}
               </span>
               <h3 className="flex-1 text-xl font-semibold tracking-tight md:text-2xl">
-                {service.title}
+                {localizedService?.title ?? service.title}
               </h3>
               <p className="hidden max-w-md flex-1 text-pretty leading-relaxed text-muted-foreground md:block">
-                {service.short}
+                {localizedService?.short ?? service.short}
               </p>
               <ArrowUpRight className="size-5 shrink-0 text-muted-foreground transition-all group-hover:translate-x-1 group-hover:text-accent" />
             </Link>
           </ScrollReveal>
-        ))}
+          )
+        })}
       </div>
     </section>
   )
