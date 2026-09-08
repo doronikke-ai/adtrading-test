@@ -9,6 +9,8 @@ import { Kicker } from '@/components/ui/kicker'
 import { Button } from '@/components/ui/button'
 import { useLocale } from '@/lib/i18n/language-provider'
 
+const showProducts = false
+
 export default function ProductsPage() {
   const { locale, t } = useLocale()
   const sectionTitle = locale === 'tc' ? '精選品類，悉心採購。' : locale === 'ja' ? '厳選した商品を、丁寧に調達。' : locale === 'zh' ? '精选品类，悉心采购。' : locale === 'th' ? 'คัดสรรสินค้า จัดหาอย่างใส่ใจ' : 'Selected categories, sourced with care.'
@@ -27,8 +29,9 @@ export default function ProductsPage() {
         imageAlt="Premium Asian snacks and specialty goods arranged on a warm surface"
       />
 
-      <section className="bg-muted">
-        <div className="mx-auto max-w-7xl px-5 py-20 md:px-8 md:py-28">
+      {showProducts ? (
+        <section className="bg-muted">
+          <div className="mx-auto max-w-7xl px-5 py-20 md:px-8 md:py-28">
           <div className="mb-12 flex items-end justify-between gap-6">
             <h2 className="max-w-xl text-balance text-3xl font-semibold tracking-tight md:text-5xl">{sectionTitle}</h2>
             <span className="hidden font-mono text-xs uppercase tracking-[0.2em] text-accent md:block">{sectionKicker}</span>
@@ -73,10 +76,29 @@ export default function ProductsPage() {
             className="transition-transform group-hover/button:translate-x-0.5 group-hover/button:-translate-y-0.5"
           />
         </Button>
-        </div>
-      </section>
+          </div>
+        </section>
+      ) : (
+        <section className="bg-background">
+          <div className="mx-auto flex min-h-[520px] max-w-5xl flex-col items-center justify-center px-5 py-24 text-center md:min-h-[620px] md:px-8">
+            <Kicker className="text-accent">{t.products.comingSoon.kicker}</Kicker>
+            <h2 className="mt-6 text-balance text-5xl font-semibold tracking-tight text-foreground md:text-7xl">
+              {t.products.comingSoon.title}
+            </h2>
+            <p className="mt-8 max-w-3xl text-pretty text-lg leading-relaxed text-muted-foreground md:text-xl">
+              {t.products.comingSoon.body}
+            </p>
+            <Button render={<Link href="/contact" />} size="lg" className="mt-12 rounded-full bg-accent px-8 text-accent-foreground hover:bg-accent/90">
+              {t.products.comingSoon.button}
+              <ArrowUpRight data-icon="inline-end" />
+            </Button>
+          </div>
+        </section>
+      )}
 
-      <section className="mx-auto max-w-7xl px-5 pb-24 md:px-8">
+      {showProducts && (
+        <>
+          <section className="mx-auto max-w-7xl px-5 pb-24 md:px-8">
         <div className="relative grid items-stretch overflow-hidden md:grid-cols-2">
           <div className="absolute inset-0 hidden bg-primary md:block" />
           <div className="relative flex flex-col justify-center bg-primary px-5 py-16 text-primary-foreground md:px-14 md:py-24">
@@ -102,11 +124,13 @@ export default function ProductsPage() {
         </div>
       </section>
 
-      <CtaBand
-        title={t.products.cta.title}
-        body={t.products.cta.body}
-        cta={t.products.cta.button}
-      />
+          <CtaBand
+            title={t.products.cta.title}
+            body={t.products.cta.body}
+            cta={t.products.cta.button}
+          />
+        </>
+      )}
     </main>
   )
 }
