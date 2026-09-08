@@ -8,10 +8,10 @@ import { Kicker } from '@/components/ui/kicker'
 import { useLocale } from '@/lib/i18n/language-provider'
 
 const details = [
-  { icon: MapPin, key: 'office' as const, value: 'Richmond, BC, Canada' },
-  { icon: Phone, key: 'phone' as const, value: '+1 (778) 321-5858', href: 'tel:+17783215858' },
-  { icon: Mail, key: 'email' as const, value: 'Info@adtradings.com', href: 'mailto:Info@adtradings.com' },
-  { icon: Clock, key: 'response' as const, value: 'Within one business day' },
+  { icon: MapPin, key: 'office' as const, value: 'Richmond, BC, Canada', valueKey: undefined },
+  { icon: Phone, key: 'phone' as const, value: '+1 (778) 321-5858', valueKey: undefined, href: 'tel:+17783215858' },
+  { icon: Mail, key: 'email' as const, value: 'Info@adtradings.com', valueKey: undefined, href: 'mailto:Info@adtradings.com' },
+  { icon: Clock, key: 'response' as const, valueKey: 'responseValue' as const },
 ]
 
 export default function ContactPage() {
@@ -52,7 +52,7 @@ export default function ContactPage() {
                         {detail.value}
                       </a>
                     ) : (
-                      <p className="mt-1 text-lg font-medium text-foreground">{detail.value}</p>
+                      <p className="mt-1 text-lg font-medium text-foreground">{detail.valueKey ? t.contact.details[detail.valueKey] : detail.value}</p>
                     )}
                   </div>
                 </div>
